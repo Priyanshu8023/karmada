@@ -16,6 +16,7 @@
 - [Phase 6: Prioritized Roadmap](#phase-6-prioritized-roadmap)
 - [Phase 7: Quick Wins](#phase-7-quick-wins)
 - [Phase 8: Future Vision & Innovation](#phase-8-future-vision--innovation)
+- [Architectural Impact Analysis](FEATURE_ARCHITECTURE_ANALYSIS.md)
 
 ---
 
