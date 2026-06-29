@@ -99,7 +99,7 @@ var (
 
 	karmadaRelease string
 
-	defaultEtcdImage = "etcd:3.6.6-0"
+	defaultEtcdImage = "etcd:3.6.8-0"
 
 	// DefaultCrdURL Karmada crds resource
 	DefaultCrdURL string
@@ -318,6 +318,13 @@ func (i *CommandInitOption) Validate(parentCommand string) error {
 	if i.KarmadaAPIServerAdvertiseAddress != "" {
 		if netutils.ParseIPSloppy(i.KarmadaAPIServerAdvertiseAddress) == nil {
 			return fmt.Errorf("karmada apiserver advertise address is not valid")
+		}
+	}
+	if i.ExternalIP != "" {
+		for ip := range strings.SplitSeq(i.ExternalIP, ",") {
+			if net.ParseIP(ip) == nil {
+				return fmt.Errorf("cert-external-ip %q is not a valid IP address", ip)
+			}
 		}
 	}
 	if (i.CaCertFile != "") != (i.CaKeyFile != "") {
